@@ -1,0 +1,2 @@
+1 if discripition take more space and you want only 2 line then use this 
+ example : numberOfLines={2}
