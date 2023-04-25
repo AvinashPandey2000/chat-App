@@ -29,13 +29,14 @@ export default function ChartScreen() {
 
   return (
     <ImageBackground source={bg} style={styles.bg}>
-    
+    {/** */}
     <KeyboardAvoidingView>
     <FlatList
         data={message}
         renderItem={({item}) => <Item message={item} />}
         inverted
       />
+     
       </KeyboardAvoidingView>
     </ImageBackground>
     
@@ -56,6 +57,15 @@ const styles =StyleSheet.create({
     padding:10,
     borderRadius:10,
     maxWidth:'80%',
+    shadowColor: "#000",
+shadowOffset: {
+	width: 0,
+	height: 6,
+},
+shadowOpacity: 0.37,
+shadowRadius: 7.49,
+
+elevation: 12,
   
   }
 })
