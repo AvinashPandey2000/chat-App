@@ -3,16 +3,19 @@ import {
   View,
   Image,
   StyleSheet,
-  SafeAreaView,
   KeyboardAvoidingView,
   StatusBar,
   FlatList,
+  Pressable,
 } from "react-native";
 import Svg, { Path } from 'react-native-svg';
 import chats from '../../../assets/data/chats.json'
 import moment from 'moment';
+import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const ChatListiteam = () => {
+  const navigation =useNavigation();
   const DATA = [
     {
       id: 'bd7acbea-c11-46c2-aed5-3ad53abb28ba',
@@ -47,28 +50,28 @@ const ChatListiteam = () => {
   // chat list
   const CHAT = [
     {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+      id: 'bd7acbeda-c1b1-46c2-aed5-3a53abb28ba',
       src: 'https://picsum.photos/200/300',
       name: 'Avinash Pandey',
       time: '8:25',
       discription: 'Hello raj Hello rajHello rajHello rajHello rajHellHello rajHello rajHello rajHello rajHello rajHello rajHello rajHello rajHello rajHello rajHello rajHello rajHello rajo rajHello rajHello raj',
     },
     {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+      id: 'bd7acbea-c1b1-46c2-aed5-3ad53bbd28ba',
       src: 'https://picsum.photos/200/300',
       name: 'Avinash Pandey',
       time: '8:25',
       discription: 'Hello raj Hello rajHello rajHello rajHello rajHellHello rajHello rajHello rajHello rajHello rajHello rajHello rajHello rajHello rajHello rajHello rajHello rajHello rajo rajHello rajHello raj',
     },
     {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+      id: 'bd7acbea-c1b1-46c2-aed5-3ad53ab28ba',
       src: 'https://picsum.photos/200/300',
       name: 'Avinash Pandey',
       time: '8:25',
       discription: 'Hello raj Hello rajHello rajHello rajHello rajHellHello rajHello rajHello rajHello rajHello rajHello rajHello rajHello rajHello rajHello rajHello rajHello rajHello rajo rajHello rajHello raj',
     },
     {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+      id: 'bd7acbea-c1b1-46c2-aed5-3add53abb28ba',
       src: 'https://picsum.photos/200/300',
       name: 'Avinash Pandey',
       time: '8:25',
@@ -77,7 +80,10 @@ const ChatListiteam = () => {
 
 
   ];
-  const Chat = ({ name, src, time, discription }) => (
+  const Chat = ({ name, src, time, discription,id }) => (
+    <Pressable onPress={() => navigation.navigate('ChatScreenContainer',{
+      id:id,name:name
+    })}>
     <View style={styles.chatContainer}>
       <Image
         source={{ uri: src }}
@@ -93,9 +99,10 @@ const ChatListiteam = () => {
       </View>
 
     </View>
+    </Pressable>
   );
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#1B202D', marginTop: StatusBar.currentHeight || 0, }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#1B202D' }} edges={['bottom']}>
       <KeyboardAvoidingView >
         {/** header */}
         <View style={styles.header}>
@@ -128,8 +135,9 @@ const ChatListiteam = () => {
               src={item.user.image}
               name={item.user.name}
               time={item.lastMessage.createdAt}
-              discription={item.lastMessage.text} />}
-            // keyExtractor={item => item.id}
+              discription={item.lastMessage.text}
+              id={item.id}
+               />}
           />
 
 
@@ -218,13 +226,13 @@ const styles = StyleSheet.create({
   name: {
     fontWeight: 600,
     fontSize: 15,
-    lineHight: 22,
+    lineHeight: 22,
     color: '#FFFF',
   },
   discription: {
     fontWeight: 400,
     fontSize: 14,
-    lineHight: 21,
+    lineHeight: 21,
     color: '#B3B9C9',
     marginRight: 20
   },

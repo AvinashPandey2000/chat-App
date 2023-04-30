@@ -1,14 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import ChatListiteam from './src/components/ChatListiteam';
-import ChartScreen from './src/screens/ChartScreen';
-import InputBox from './src/components/InputBox'
+
+import Navigation from './src/Navigation/index'
 export default function App() {
   return (
     <View style={styles.container}>
-      {/**  <ChatListiteam/>  */}
-      <ChartScreen />
-      <InputBox/>
+      <Navigation />
       <StatusBar style="auto" />
     </View>
   );
